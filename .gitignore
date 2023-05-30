@@ -1,0 +1,6 @@
+# folder
+**/flagged
+**/__pycache__
+
+# file
+test.py
