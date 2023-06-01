@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+ web :
+  build:
+   context: .
+  ports:
+  - 8080:7860
+  volumes:
+  - ./:/app
+  - /.cache/torch/:$PWD/../root/.cache/torch

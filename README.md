@@ -2,16 +2,22 @@
 
 ## To-do list:
 
-- [ ] Investigate Docker.
-- [ ] Apply Docker to project.
-- [ ] Create a django server with 1 API calls.
+- [X] Investigate Docker.
+- [X] Apply Docker to project.
+- [ ] Create a django server with 1 API call.
 - [ ] Create a front-end web app.
 - [ ] Investigate how the front-end request and wait for the Back-end API.
 - ...
 ## How to run the app
  This app was built using [gradio](https://gradio.app/) - an open-source Python library for a quick and easy to use Machine Learning development.
+### **I. Docker**
 
-0. **(optional)** I recommend you to create a virtual environment by using conda command. Please note that the python version should be greater than or equal to 3.7
+```shell
+$ docker-compose up -d --build
+```
+
+### **II. Others**
+0. **(optional)** I recommend to create a virtual environment by using conda command. Please note that the python version should be greater than or equal to 3.7
 
 ```shell
 conda create --name <new-name> python=3.8

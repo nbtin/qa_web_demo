@@ -63,4 +63,4 @@ def inference(raw_image, question):
             return answers
 
 
-gr.Interface(inference, inputs, outputs, title=title, description=description).launch(enable_queue=True, share='True')
+gr.Interface(inference, inputs, outputs, title=title, description=description).launch(enable_queue=True, share='True', server_port=7860, server_name="0.0.0.0")
