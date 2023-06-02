@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Visual Question Answering Demo</title>
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'vqa/style.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="column">
+			<h1 id="app_name">Visual Question Answering</h1>
+			<p id="instruction"><b>Instruction:</b> Upload an Image and Ask a Question.</p>
+			<form>
+				<label for="file-input" class="file-upload">
+					<img id="image" src="" alt="Upload Image">
+				</label>
+				<input type="file" id="file-input" accept="image/*">
+				<textarea type="text" id="question-input" placeholder="Type your question here..."></textarea>
+				<button type="submit" id="submit-button">Ask</button>
+				<p id="credit">Website developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a>, with the core AI model being <a href="https://github.com/salesforce/BLIP" target="_blank">BLIP</a>.</p>
+			</form>
+		</div>
+		<div class="column">
+			<h1>Answer</h1>
+			<p id="answer">...</p>
+		</div>
+	</div>
+
+	{% load static %} 
+	<script type="text/javascript" src="{% static 'vqa/script.js' %}"></script>
+
+</body>
+</html>

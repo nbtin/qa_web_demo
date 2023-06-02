@@ -6,3 +6,7 @@ requests
 torch
 torchvision
 gradio
+django==4.2.1
+django-cors-headers
+djangorestframework
+Pillow
