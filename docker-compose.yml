@@ -1,10 +1,11 @@
 version: '3.8'
 
 services:
- web:
-  build:
-   context: .
-  ports:
-  - 8080:5000
-  volumes:
-  - ./:/app
+  application:
+    container_name: 'vqa-website'
+    build:
+      context: .
+    ports:
+    - 8080:5000
+    volumes:
+    - ./:/app
