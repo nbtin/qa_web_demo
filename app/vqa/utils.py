@@ -3,6 +3,7 @@ from torchvision.transforms.functional import InterpolationMode
 from torchvision import transforms
 import torch
 from PIL import Image
+import base64
 
 # import BLIP model for Visual Question Answering tasks.
 from .models.blip_vqa import blip_vqa
@@ -39,6 +40,11 @@ model = blip_vqa(pretrained=model_url, image_size=image_size, vit="base")
 model.eval()
 model = model.to(device)
 
+
+def image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+        return encoded_string.decode("utf-8")
 
 def preprocess_question(questions):
     """

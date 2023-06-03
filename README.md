@@ -2,6 +2,7 @@
 
 ## To-do list:
 
+- [ ] Code template for testing.
 - [ ] Introduction.
 - [ ] Technical Overview.
 - [ ] How to Install.
