@@ -8,4 +8,3 @@ services:
   - 8080:5000
   volumes:
   - ./:/app
-  - /.cache/torch/:$PWD/../root/.cache/torch

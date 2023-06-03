@@ -70,7 +70,6 @@ label {
     font-size: 16px;
     font-weight: bold;
     color: #333333;
-    /* margin-bottom: 10px; */
 }
 
 #file-input {
@@ -132,10 +131,8 @@ textarea{
 
 #answer {
     font-size: 20px;
-    /* font-weight: bold; */
     margin: 20px;
     color: #333333;
-    /* text-align: center; */
 }
 
 #credit{
