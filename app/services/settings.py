@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "vqa",
 ]
 
-APPEND_SLASH=False
+APPEND_SLASH = False
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -129,5 +129,5 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "vqa", 'static'),
+    os.path.join(BASE_DIR, "vqa", "static"),
 ]

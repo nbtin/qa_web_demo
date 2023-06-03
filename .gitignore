@@ -1,5 +1,6 @@
 # folder
 **/__pycache__
+**/.vscode
 
 # file
 test.py

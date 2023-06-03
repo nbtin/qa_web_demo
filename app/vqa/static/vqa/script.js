@@ -4,6 +4,10 @@ const submitButton = document.getElementById('submit-button');
 const answerElement = document.getElementById('answer');
 const imageElement = document.getElementById('image');
 
+function reloadPage(){
+    location.reload();
+}
+
 fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     if (file) {
