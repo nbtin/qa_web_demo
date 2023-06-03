@@ -1,3 +1,7 @@
+'''
+Code cloned from repository of the BLIP model.
+URL: https://github.com/salesforce/BLIP
+'''
 from .med import BertConfig, BertModel, BertLMHeadModel
 from .blip import create_vit, init_tokenizer, load_checkpoint
 
@@ -9,7 +13,7 @@ import numpy as np
 
 class BLIP_VQA(nn.Module):
     def __init__(self,                 
-                 med_config = './configs/med_config.json',  
+                 med_config = './app/vqa/configs/med_config.json', 
                  image_size = 480,
                  vit = 'base',
                  vit_grad_ckpt = False,

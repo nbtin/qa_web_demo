@@ -76,7 +76,7 @@ class GetAnswers(APIView):
             
             current_directory = os.getcwd()  # Get the current working directory
             
-            image_path = os.path.join(current_directory, IMAGE_NAME)  # Construct the absolute path
+            image_path = os.path.join(current_directory, 'app', IMAGE_NAME)  # Construct the absolute path
 
             # decode the string base64 to an image
             _, image = image.split(',', 1)  # Remove the 'data:image/jpeg;base64,' prefix

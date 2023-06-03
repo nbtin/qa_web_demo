@@ -2,21 +2,20 @@
 
 ## To-do list:
 
-- [X] Investigate Docker.
-- [X] Apply Docker to project.
-- [ ] Create a django server with 1 API call.
-- [ ] Create a front-end web app.
-- [ ] Investigate how the front-end request and wait for the Back-end API.
-- ...
+- [ ] Introduction.
+- [ ] Technical Overview.
+- [ ] How to Install.
+- [ ] Usage.
+
+
 ## How to run the app
- This app was built using [gradio](https://gradio.app/) - an open-source Python library for a quick and easy to use Machine Learning development.
 ### **I. Docker**
 
 ```shell
 $ docker-compose up -d --build
 ```
 
-### **II. Others**
+### **II. Others who do not have Docker**
 0. **(optional)** I recommend to create a virtual environment by using conda command. Please note that the python version should be greater than or equal to 3.7
 
 ```shell
@@ -31,10 +30,5 @@ cd cinnamon_ai
 pip install -r requirements.txt
 ```
 
-2. At the end of the stage, you just need to run the `app.py` file and [gradio](https://gradio.app/) will do everything for you.
 
-```shell
-python app.py
-```
-
-**Note:** The first time you run the `app.py` file, you will need to be patient :smile:. Because the model download process may take 5 ~ 15 minutes depending on your network speed.
+**Note:** The first time you run the app, you will need to be patient :smile:. Because the model download process may take 5 ~ 15 minutes depending on your network speed.

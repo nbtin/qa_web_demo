@@ -69,10 +69,10 @@ submitButton.addEventListener('click', (event) => {
 
 // Add an event listener to the question input field
 questionInput.addEventListener('keydown', function(event) {
-// Check if the "Enter" key was pressed
-if (event.key === 'Enter') {
-    // Check if the "Shift" key was held down
-    if (event.shiftKey) {
+    // Check if the "Enter" key was pressed
+    if (event.key === 'Enter') {
+      // Check if the "Shift" key was held down
+      if (event.shiftKey) {
         // Insert a line break character into the question input field
         const cursorPosition = this.selectionStart;
         const oldValue = this.value;
@@ -81,9 +81,10 @@ if (event.key === 'Enter') {
         this.selectionStart = this.selectionEnd = cursorPosition + 1;
         // Prevent the default action of the "Enter" key (submitting a form)
         event.preventDefault();
-    } else {
-        // Click the submit button to submit the form
+      } else {
+        // Prevent focusing on the question input and submitting the form
+        this.blur();
         submitButton.click();
+      }
     }
-}
-});
+  });
