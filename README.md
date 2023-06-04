@@ -1,12 +1,12 @@
 
 <p align="center">
-  <h1 align="center"> Visual Question Answering Demo Web App </h1>
+  <h1 align="center"> Visual Question Answering Demo</h1>
   <p align="center" style="font-weight: bold">Ask anything about the images!</p>
 </p>
 
 <img src="imgs/intro.png">
 
-This repository contains a **Visual Question Answering** (VQA) demo web app that utilizes the **BLIP** (Bootstrapping Language-Image Pre-training) model for unified vision-language understanding and generation. 
+This repository contains a [**Visual Question Answering**](https://huggingface.co/tasks/visual-question-answering) (VQA) demo web app that utilizes the [**BLIP**](https://arxiv.org/abs/2201.12086) (Bootstrapping Language-Image Pre-training) model for unified vision-language understanding and generation. 
 
 **Information:**
 - **Frontend:** HTML, CSS, Javascript.
@@ -24,7 +24,7 @@ This repository contains a **Visual Question Answering** (VQA) demo web app that
 - [3. How to Install](#3-how-to-install)
 - [4. Usage](#4-usage)
 - [5. How to run automated tests](#5-how-to-run-automated-tests)
-<!-- - [6. Limitations](#6-limitations) -->
+- [6. References](#6-references)
 
 ## 1. Introduction
 **Visual Question Answering** (VQA) is a challenging task in the field of computer vision and natural language processing. It involves answering questions about an image based on its visual content. There are several potential applications for VQA, including helping visually impaired individuals understand their surroundings, assisting with image retrieval in large databases, and improving the capabilities of autonomous robots and vehicles.
@@ -100,7 +100,13 @@ To run automated tests for this application, you simply open a new terminal and 
 After running this command, you will see the test results as shown below:
 <img src="imgs/tests.png">
 
-<!-- ## 6. Limitations -->
+## 6. References
+
+- **BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation.** - Junnan Li, Dongxu Li, Caiming Xiong, Steven Hoi - [arXiv:2201.12086](https://arxiv.org/abs/2201.12086) (2022).
+- **BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation.** - Junnan Li, Dongxu Li, Caiming Xiong, Steven Hoi - [Repo](https://github.com/salesforce/BLIP).
+- **Guides on using Docker for Python application** - [Docker docs](https://docs.docker.com/language/python/).
+- **Django REST API UNIT Testing** - Tafadzwa Lameck Nyamukapa - [Video](https://youtu.be/z6_v1UQ9Ht0).
+- **Install Docker Engine on Ubuntu** - [Docker docs](https://docs.docker.com/engine/install/ubuntu/).
 
 ## Final Notes
 
