@@ -48,7 +48,7 @@ To ensure consistent and reproducible installations, this repository is packaged
 ## 3. How to Install
 To install and run the VQA demo web app, please follow the steps below:
 
-1. Ensure that Docker is installed on your system. You can download and install Docker from the official website: [Click here!](https://docs.docker.com/engine/install/ubuntu/).
+1. Ensure that Docker is installed on your system. You can download and install Docker from the official website: [Docker Engine for Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 2. Clone this repository to your local machine using the following command:
 
