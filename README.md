@@ -27,9 +27,9 @@ This repository contains a [**Visual Question Answering**](https://huggingface.c
 - [6. References](#6-references)
 
 ## 1. Introduction
-**Visual Question Answering** (VQA) is a challenging task in the field of computer vision and natural language processing. It involves answering questions about an image based on its visual content. There are several potential applications for VQA, including helping visually impaired individuals understand their surroundings, assisting with image retrieval in large databases, and improving the capabilities of autonomous robots and vehicles.
+[**Visual Question Answering**](https://huggingface.co/tasks/visual-question-answering) (VQA) is a challenging task in the field of computer vision and natural language processing. It involves answering questions about an image based on its visual content. There are several potential applications for VQA, including helping visually impaired individuals understand their surroundings, assisting with image retrieval in large databases, and improving the capabilities of autonomous robots and vehicles.
 
-This repository provides a web application that demonstrates the capabilities of the **BLIP** model for VQA. The app allows users to upload images and ask questions, and the model provides answers based on the visual information present in the images.
+This repository provides a web application that demonstrates the capabilities of the [**BLIP**](https://arxiv.org/abs/2201.12086) model for VQA. The app allows users to upload images and ask questions, and the model provides answers based on the visual information present in the images.
 
 
 ## 2. Technical Overview
@@ -68,7 +68,7 @@ To install and run the VQA demo web app, please follow the steps below:
    docker compose up --build
    ```
 
-   **Note:** The first time you run the above command, you will need to be patient :smile:. The containerization process may take up to 30 minutes depending on your network speed. This is because the process involves downloading libraries (also includes some libraries to run on GPU if available) and the BLIP model, which has a size of approximately 1.35 GB.
+   **Note:** The first time you run the above command, you will need to be patient :smile:. This process may take up to 30 minutes depending on your network speed. This is because the process involves downloading libraries (also includes some libraries to run on GPU if available) and the **BLIP** model, which has a size of approximately *1.35 GB*.
 
 5. Wait for the installation process to complete. Once the downloading is done, the web app will be ready to use.
 

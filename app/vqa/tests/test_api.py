@@ -58,7 +58,7 @@ class GetAnswersTestCase(APITestCase):
         self.template(questions, "image3.jpg", answers)
 
     def test_get_answers_4(self):
-        questions = "what is on the table? what kind of table is it? who is sitting on the chair? what is the color of the chair? what is he doing? does he have eyes? what do his legs doing? what is on his hand? what is the color of the phone?"
+        questions = "what is on the table? what kind of table is it? who is sitting on the chair? what is the color of the chair? what is he doing? does he have eyes? what did his legs do? what is on his hand? what is the color of the phone?"
         answers = [
             "coffee cup and saucer.",
             "wooden.",
