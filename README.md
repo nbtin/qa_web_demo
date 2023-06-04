@@ -75,7 +75,7 @@ To install and run the VQA demo web app, please follow the steps below:
 ## 4. Usage
 To use the web app, follow the steps below:
 
-1. Open your web browser and navigate to [http://localhost:8080](localhost:8080).
+1. Open your web browser and navigate to [http://localhost:8080](http://localhost:8080).
 
 2. In the web app, you can browse and upload an image using the provided interface.
     <img src="imgs/webUI.png">
