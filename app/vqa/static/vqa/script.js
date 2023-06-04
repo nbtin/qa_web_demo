@@ -1,3 +1,4 @@
+/* Get element by its id to be able to interact with */
 const fileInput = document.getElementById('file-input');
 const questionInput = document.getElementById('question-input');
 const submitButton = document.getElementById('submit-button');
@@ -5,10 +6,12 @@ const answerElement = document.getElementById('answer');
 const imageElement = document.getElementById('image');
 
 function reloadPage(){
+    /* Re-load the page if user click on the 'location' */
     location.reload();
 }
 
 fileInput.addEventListener('change', () => {
+    /* Change the image element with respect to the image was uploaded by user */
     const file = fileInput.files[0];
     if (file) {
         const reader = new FileReader();
@@ -20,12 +23,13 @@ fileInput.addEventListener('change', () => {
 });
 
 submitButton.addEventListener('click', (event) => {
+    /* Use fetch API to get the answer from user via API named '/answer' */
     event.preventDefault();
     const file = fileInput.files[0];
     const question = questionInput.value;
     answerElement.innerText = "Wait a second...";
 
-    if (file && question) {
+    if (file && question) { // check if the file is uploaded and the question box is not empty
         const formData = new FormData();
         formData.append('image', file);
         formData.append('questions', question);
@@ -47,7 +51,8 @@ submitButton.addEventListener('click', (event) => {
                 console.log(result);
                 const lines = result.split("\n");
                 console.log(lines);
-                if (lines.length > 1){
+                
+                if (lines.length > 1){ // change the format of result for multi-answer cases.
                     for (let i = 0; i < lines.length; i+=3){
                         let line_changed = '<b>' + lines[i] + '</b>';
                         if (i != 0) lines[i] = '<br>' + line_changed;
@@ -71,8 +76,13 @@ submitButton.addEventListener('click', (event) => {
     }
 });
 
-// Add an event listener to the question input field
 questionInput.addEventListener('keydown', function(event) {
+    /* Add an event listener to the question input field
+        Concretely, it will execute the questions immediately and unfocus this 
+        question box when the users press only 1 Enter key.
+        Beside that, it will break the line if the users hold Shift and press Enter.
+    */
+   
     // Check if the "Enter" key was pressed
     if (event.key === 'Enter') {
       // Check if the "Shift" key was held down
