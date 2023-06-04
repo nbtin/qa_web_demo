@@ -11,7 +11,7 @@ from .models.blip_vqa import blip_vqa
 IMAGE_NAME = "recently_asked.jpg"
 
 
-# Configuration for running the model on GPU cuda if available.
+""" Configuration for running the model on GPU cuda if available."""
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -42,9 +42,19 @@ model = model.to(device)
 
 
 def image_to_base64(image_path):
+    """
+    This function takes an image file path as input, encodes the image as a base64 string, and returns
+    the encoded string in utf-8 format.
+
+    Args:
+        image_path: The file path of the image that needs to be converted to base64 encoding
+    Return:
+        a base64 encoded string representation of the image located at the specified `image_path`.
+    """
     with open(image_path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
         return encoded_string.decode("utf-8")
+
 
 def preprocess_question(questions):
     """

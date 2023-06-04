@@ -33,11 +33,7 @@ This repository provides a web application that demonstrates the capabilities of
 
 
 ## 2. Technical Overview
-The core AI model used in this demo web app is the **BLIP** model. The **BLIP** model is a state-of-the-art vision-language model that combines pre-training and fine-tuning on a large-scale image-text dataset. It achieves impressive results on various vision-language tasks, including VQA. This web app used the model which was implemented using [Pytorch](https://pytorch.org/) at the [original repo of BLIP](https://github.com/salesforce/BLIP).
-
- <!-- For more details about the BLIP model, please refer to the following paper:
-
-- Junnan Li, Dongxu Li, Caiming Xiong, Steven Hoi. "Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation." [arXiv:2201.12086](https://arxiv.org/abs/2201.12086) (2022). -->
+The core AI model used in this demo web app is the **BLIP** model. The **BLIP** model is a state-of-the-art vision-language model and it achieves impressive results on various vision-language tasks, including VQA. This web app used the model which was implemented using [Pytorch](https://pytorch.org/) at the [original repo of BLIP](https://github.com/salesforce/BLIP).
 
 The web app is built using the [Django framework](https://www.djangoproject.com/). Django provides a convenient and efficient way to handle web requests and build interactive web applications. By utilizing Django, we can easily integrate the BLIP model into the web app and provide a seamless user experience.
 
@@ -48,7 +44,7 @@ To ensure consistent and reproducible installations, this repository is packaged
 ## 3. How to Install
 To install and run the VQA demo web app, please follow the steps below:
 
-1. Ensure that Docker is installed on your system. You can download and install Docker from the official website: [Docker Engine for Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+1. Ensure that Docker is installed on your system. You can download and install Docker from the official website: [Docker Engine for Ubuntu](https://docs.docker.com/engine/install/ubuntu/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 2. Clone this repository to your local machine using the following command:
 
@@ -94,7 +90,7 @@ To use the web app, follow the steps below:
 To run automated tests for this application, you simply open a new terminal and run the following command:
 
 ```shell
-    docker exec -it vqa-web-app ./app/manage.py test app/vqa
+docker exec -it vqa-web-app ./app/manage.py test app/vqa
 ```
 
 After running this command, you will see the test results as shown below:
