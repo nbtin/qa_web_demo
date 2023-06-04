@@ -68,7 +68,7 @@ To install and run the VQA demo web app, please follow the steps below:
    docker compose up --build
    ```
 
-   **Note:** The first time you run the above command, you will need to be patient :smile:. This process may take up to 30 minutes depending on your network speed. This is because the process involves downloading libraries (also includes some libraries to run on GPU if available) and the **BLIP** model, which has a size of approximately *1.35 GB*.
+   **Note:** The first time you run the above command, you will need to be patient :smile:. This process may take up to 30 minutes depending on your internet speed. This is because the process involves downloading libraries (also includes some libraries to run on GPU if available) and the **BLIP** model, which has a size of approximately *1.35 GB*.
 
 5. Wait for the installation process to complete. Once the downloading is done, the web app will be ready to use.
 
@@ -94,7 +94,7 @@ To use the web app, follow the steps below:
 To run automated tests for this application, you simply open a new terminal and run the following command:
 
 ```shell
-    docker exec -it vqa-website ./app/manage.py test app/vqa
+    docker exec -it vqa-web-app ./app/manage.py test app/vqa
 ```
 
 After running this command, you will see the test results as shown below:
