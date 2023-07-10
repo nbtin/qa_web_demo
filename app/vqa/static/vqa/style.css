@@ -1,11 +1,11 @@
-body {
+ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #F5F5F5;
 }
 
-/* Large screens */
+
 .container {
     display: flex;
     flex-direction: row;
@@ -137,7 +137,7 @@ textarea{
     font-size: 14px;
 }
 
-/* Small screens */
+
 @media (max-width: 768px) {
 .container {
     flex-direction: column;
@@ -146,4 +146,130 @@ textarea{
 
 .column {
     max-width: 100%;
-}}
+}}  
+
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.option-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.option-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.text-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}
+
+.image-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.option-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.text-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}
+
+.image-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.question-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    flex: 1;
+    width: 300px;
+    font-size: 16px;
+}
+
+.answer-box {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}

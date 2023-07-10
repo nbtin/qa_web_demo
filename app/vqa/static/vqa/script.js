@@ -1,45 +1,83 @@
 /* Get element by its id to be able to interact with */
-const fileInput = document.getElementById('file-input');
+// const fileInput = document.getElementById('file-input');
+
 const questionInput = document.getElementById('question-input');
 const submitButton = document.getElementById('submit-button');
-const answerElement = document.getElementById('answer');
-const imageElement = document.getElementById('image');
+
+
+const textButton = document.querySelector("#text-button");
+const imageButton = document.querySelector("#image-button");
+const textInput = document.querySelector("#text-input");
+const imageInput = document.querySelector("#image-input");
+const answerBox = document.querySelector("#answer");
+
+textButton.addEventListener("click", showTextInput);
+imageButton.addEventListener("click", showImageInput);
+
+const fileInput = document.createElement("input");
 
 function reloadPage(){
     /* Re-load the page if user click on the 'location' */
     location.reload();
 }
 
-fileInput.addEventListener('change', () => {
-    /* Change the image element with respect to the image was uploaded by user */
-    const file = fileInput.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-            imageElement.src = reader.result;
-        });
-        reader.readAsDataURL(file);
-    }
-});
+// fileInput.addEventListener('change', () => {
+//     /* Change the image element with respect to the image was uploaded by user */
+//     const file = fileInput.files[0];
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.addEventListener('load', () => {
+//             imageElement.src = reader.result;
+//         });
+//         reader.readAsDataURL(file);
+//     }
+// });
 
 submitButton.addEventListener('click', (event) => {
+
+
+
+    
+
+
     /* Use fetch API to get the answer from user via API named '/answer' */
     event.preventDefault();
-    const file = fileInput.files[0];
+
+    // if(fileInput.files === null){
+    //     console.log("1");
+    // }
+    // else{
+
+    // const file = fileInput.files[0];
     const question = questionInput.value;
-    answerElement.innerText = "Wait a second...";
+    // }
+    answerBox.innerText = "Wait a second...";
 
-    if (file && question) { // check if the file is uploaded and the question box is not empty
-        const formData = new FormData();
-        formData.append('image', file);
-        formData.append('questions', question);
+    if (question) { // check if the file is uploaded and the question box is not empty
+        // const formData = new FormData();
+        // formData.append('image', file);
+        // formData.append('questions', question);
+        let input = {};
+        if(fileInput.files === null){
+                input = {
+                    context: textInput.value,
+                    questions: questionInput.value,
+                    is_image: false
+                }
+            console.log(1)
 
+        }
+        else {
+            input = {
+                context: imageInput.src,
+                questions: questionInput.value,
+                is_image: true
+            }
+            console.log(2);
+        }
         fetch('/answer', {
         method: 'POST',
-        body: JSON.stringify({
-            image: imageElement.src,
-            questions: questionInput.value
-        }),
+        body: JSON.stringify(input),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -53,7 +91,7 @@ submitButton.addEventListener('click', (event) => {
                 console.log(lines);
                 
                 if (lines.length > 1){ // change the format of result for multi-answer cases.
-                    for (let i = 0; i < lines.length; i+=3){
+                    for (let i = 0; i < lines.length; i+=3){    
                         let line_changed = '<b>' + lines[i] + '</b>';
                         if (i != 0) lines[i] = '<br>' + line_changed;
                         lines[i] = line_changed;
@@ -61,7 +99,7 @@ submitButton.addEventListener('click', (event) => {
                     result = lines.join("<br>");
                     console.log(result);
                 }
-                answerElement.innerHTML = result;
+                answerBox.innerHTML = result;
             } else {
                 console.log(data);
                 throw new Error('Error getting answer from server.');
@@ -72,8 +110,9 @@ submitButton.addEventListener('click', (event) => {
         });
     }
     else {
-        answerElement.innerText = 'Please select an image and ask a question.';
+        answerBox.innerText = 'Please select an image and ask a question.';
     }
+    
 });
 
 questionInput.addEventListener('keydown', function(event) {
@@ -102,3 +141,38 @@ questionInput.addEventListener('keydown', function(event) {
       }
     }
   });
+
+
+
+  function showTextInput(event) {
+      textInput.style.display = "block";
+      imageInput.style.display = "none";
+
+        
+      event.preventDefault();
+  }
+
+  function showImageInput(event) {
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.addEventListener("change", handleImageUpload);
+      fileInput.click();
+      event.preventDefault();
+
+      
+  }
+
+  function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file.type.startsWith("image/")) {
+          alert("Please select an image file.");
+          return;
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = function () {
+          imageInput.src = reader.result;
+          imageInput.style.display = "block";
+          textInput.style.display = "none";
+      };
+  }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +13,13 @@
 			<h1 id="app_name" onclick="reloadPage()">Visual Question Answering</h1>
 			<p id="instruction"><b>Instruction:</b>  Upload an image and ask one or more questions, separated by "?".</p>
 			<form>
-				<label for="file-input" class="file-upload">
-					<img id="image" src="" alt="Upload Image">
-				</label>
-				<input type="file" id="file-input" accept="image/*">
+				<div class="option-box">
+					<button class="option-button" id="text-button">Enter Text</button>
+					<button class="option-button" id="image-button">Upload Image</button>
+					<textarea id="text-input" class="text-input" placeholder="Enter your text here..."></textarea>
+					<img id="image-input" class="image-input" alt="Uploaded Image">
+				</div>
+			
 				<textarea type="text" id="question-input" placeholder="Type your question here..."></textarea>
 				<button type="submit" id="submit-button">Ask</button>
 				<p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a>, 
@@ -33,4 +36,5 @@
 	<script type="text/javascript" src="{% static 'vqa/script.js' %}"></script>
 
 </body>
-</html>
+</html> 
+ 
