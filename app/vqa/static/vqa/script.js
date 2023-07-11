@@ -15,6 +15,7 @@ textButton.addEventListener("click", showTextInput);
 imageButton.addEventListener("click", showImageInput);
 
 const fileInput = document.createElement("input");
+let is_text = true;
 
 function reloadPage(){
     /* Re-load the page if user click on the 'location' */
@@ -58,7 +59,8 @@ submitButton.addEventListener('click', (event) => {
         // formData.append('image', file);
         // formData.append('questions', question);
         let input = {};
-        if(fileInput.files === null){
+        console.log(is_text)
+        if(is_text){
                 input = {
                     context: textInput.value,
                     questions: questionInput.value,
@@ -147,8 +149,7 @@ questionInput.addEventListener('keydown', function(event) {
   function showTextInput(event) {
       textInput.style.display = "block";
       imageInput.style.display = "none";
-
-        
+      is_text = true;
       event.preventDefault();
   }
 
@@ -157,6 +158,7 @@ questionInput.addEventListener('keydown', function(event) {
       fileInput.accept = "image/*";
       fileInput.addEventListener("change", handleImageUpload);
       fileInput.click();
+      is_text = false;
       event.preventDefault();
 
       

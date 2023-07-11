@@ -4,6 +4,7 @@ from torchvision import transforms
 import torch
 from PIL import Image
 import base64
+import logging
 
 # import BLIP model for Visual Question Answering tasks.
 from .models.blip_vqa import blip_vqa
@@ -91,7 +92,7 @@ def preprocess_question(questions):
     return flag, questions
 
 
-def inference(image_path, questions):
+def inference_img(image_path, questions):
     """
     This function takes an image path and a string of question as input, processes the question,
     and returns the answer(s) using a pre-trained model (BLIP) for visual question answering.
@@ -124,3 +125,42 @@ def inference(image_path, questions):
                 answer = model(image, quest, train=False, inference="generate")
                 answers += f"{quest}\n\t&#8594; {answer[0]}.\n\n"
             return answers
+
+
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
+headers = {"Authorization": "Bearer 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"}
+
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
+
+def predict(question, context):
+    
+    output = query({
+	    "inputs": {
+		    "question": question,
+		    "context": context
+	    },
+    })
+    return output["answer"]
+
+def inference_text(questions, context):
+    flag, questions = preprocess_question(questions)
+    print("Preprocess")
+    print(questions)
+    print(context)
+
+    answers = (
+        ""  # Parameter for saving multiple answers if there are multiple questions.
+    )
+    if not flag:
+            answer = predict(questions[0], context)
+            print(answer)
+            return answer
+    else:
+        for quest in questions:
+            answer = predict(quest, context)
+            answers += f"{quest}\n\t&#8594; {answer}.\n\n"
+        return answers
