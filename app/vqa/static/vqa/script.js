@@ -87,21 +87,94 @@ submitButton.addEventListener('click', (event) => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
+                const likeButton = document.createElement('button');
+                likeButton.innerHTML = 'Like';
+                const dislikeButton = document.createElement('button');
+                dislikeButton.innerHTML = 'Dislike';
+
+                answerBox.appendChild(likeButton);
+                answerBox.appendChild(dislikeButton);
+
+
+                likeButton.addEventListener('click', () => {
+                    // Handle like feedback here
+                });
+                
+                dislikeButton.addEventListener('click', () => {
+                    // Handle dislike feedback here
+                });
+
+
                 let result = data.data;
                 console.log(result);
                 const lines = result.split("\n");
                 console.log(lines);
                 
-                if (lines.length > 1){ // change the format of result for multi-answer cases.
-                    for (let i = 0; i < lines.length; i+=3){    
-                        let line_changed = '<b>' + lines[i] + '</b>';
-                        if (i != 0) lines[i] = '<br>' + line_changed;
-                        lines[i] = line_changed;
-                    }
-                    result = lines.join("<br>");
-                    console.log(result);
+                if (lines.length > 1) {
+                  for (let i = 0; i < lines.length; i += 3) {
+                    let line_changed = '<b>' + lines[i] + '</b>';
+                    if (i != 0) lines[i] = '<br>' + line_changed;
+                    lines[i] = line_changed;
+                
+                    // Add like and dislike buttons
+                    // let likeButton = '<button class="like-button" data-index="' + i + '">Like</button>';
+                    // let dislikeButton = '<button class="dislike-button" data-index="' + i + '">Dislike</button>';
+                    let likeButton = '<i class="fa fa-thumbs-up feedback_button" ></i>'
+                    let dislikeButton = '<i class="fa fa-thumbs-down feedback_button"></i>'                
+                    lines[i] += '   ' + likeButton + ' ' + dislikeButton;
+                  }
+                  result = lines.join("<br>");
+                  console.log(result);
                 }
+                else{
+                    // let likeButton = '<button class="like-button" data-index="' + 0 + '">Like</button>';
+                    // let dislikeButton = '<button class="dislike-button" data-index="' + 0 + '">Dislike</button>';
+                    let likeButton = '<i class="fa fa-thumbs-up feedback_button" ></i>'
+                    let dislikeButton = '<i class="fa fa-thumbs-down feedback_button"></i>'
+                    lines[0] += '   ' + likeButton + ' ' + dislikeButton;
+                    result = lines[0]
+                }
+                
                 answerBox.innerHTML = result;
+
+
+                var feedbackFn = function() {
+                console.log("clicked");
+                var maxHeight = $(window).height() - 200;
+                    var maxWidth = $(window).width() - 200;
+                    const popupCard = $('<div>').addClass('popup-card');
+                    const closeButton = $('<button>').text('X');
+                    const answerTitle = $('<h2>').text('Thank you');
+                    const answerText = $('<p>').text("Your feedback is valuable to us !");
+            
+                    closeButton.click(() => {
+                        popupCard.remove();
+                    });
+                    popupCard.append(closeButton);
+                    popupCard.append(answerTitle);
+                    popupCard.append(answerText);
+                    $('body').append(popupCard);
+            
+                    // Adjust the size of the popup card if necessary
+                    const popupCardHeight = popupCard.height();
+                    const popupCardWidth = popupCard.width();
+            
+                    if (popupCardHeight > maxHeight) {
+                        popupCard.height(maxHeight);
+                        popupCard.width(maxHeight * popupCardWidth / popupCardHeight);
+                    }
+            
+                    if (popupCardWidth > maxWidth) {
+                        popupCard.width(maxWidth);
+                        popupCard.height(maxWidth * popupCardHeight / popupCardWidth);
+                    }
+};
+const feedbackButtons = document.getElementsByClassName('feedback_button');
+
+for (var i = 0; i < feedbackButtons.length; i++) {
+    feedbackButtons[i].addEventListener('click', feedbackFn, false);
+}
+                
             } else {
                 console.log(data);
                 throw new Error('Error getting answer from server.');
@@ -178,3 +251,42 @@ questionInput.addEventListener('keydown', function(event) {
           textInput.style.display = "none";
       };
   }
+
+const instructions = "1. Select type of context you want to provide (text/image) \n 2. If text, type or copy to context field. \n If image, select image from you device to upload to system \n 3. Type or copy to question field (the content should be related to provided context)\n You can input multiple question (as long as they are separated by '?') 4. Wait for the answer \n 5. Give feedback about question" 
+
+const helpButton = document.getElementById('help-button');
+helpButton.addEventListener('click', function() {
+  
+        var maxHeight = $(window).height() - 200;
+        var maxWidth = $(window).width() - 200;
+        const popupCard = $('<div>').addClass('popup-card');
+        const closeButton = $('<button>').text('X');
+        const answerTitle = $('<h2>').text('Here is the instruction');
+        const answerText = $('<p>').text(instructions);
+
+        closeButton.click(() => {
+            popupCard.remove();
+        });
+
+        popupCard.append(closeButton);
+        popupCard.append(answerTitle);
+        popupCard.append(answerText);
+        $('body').append(popupCard);
+
+        // Adjust the size of the popup card if necessary
+        const popupCardHeight = popupCard.height();
+        const popupCardWidth = popupCard.width();
+
+        if (popupCardHeight > maxHeight) {
+            popupCard.height(maxHeight);
+            popupCard.width(maxHeight * popupCardWidth / popupCardHeight);
+        }
+
+        if (popupCardWidth > maxWidth) {
+            popupCard.width(maxWidth);
+            popupCard.height(maxWidth * popupCardHeight / popupCardWidth);
+        }
+});
+
+
+
