@@ -87,7 +87,7 @@ def preprocess_question(questions):
         flag = False
     else:
         for i in range(len(questions)):
-            questions[i] += "?"
+            questions[i] += "?" 
 
     return flag, questions
 
@@ -130,7 +130,8 @@ def inference_img(image_path, questions):
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
-headers = {"Authorization": "Bearer ***REMOVED***"}
+API_TOKEN = "***REMOVED***"
+headers = {"Authorization": f"Bearer "}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
