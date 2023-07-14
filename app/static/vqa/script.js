@@ -77,7 +77,7 @@ submitButton.addEventListener('click', (event) => {
             }
             console.log(2);
         }
-        fetch('/answer', {
+        fetch('answer/', {
         method: 'POST',
         body: JSON.stringify(input),
         headers: {
