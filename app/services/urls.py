@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path("admin", admin.site.urls),
-    path("", include("vqa.urls")),
+    path("admin/", admin.site.urls),
+    path('', include('account.urls')),  # Added account app
+    # path("vqa/", include("vqa.urls")),
+    path('userprofile/', include('userprofile.urls'), name='userprofile'),  # Added user profile app
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
