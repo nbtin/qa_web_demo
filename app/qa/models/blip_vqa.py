@@ -13,7 +13,7 @@ import numpy as np
 
 class BLIP_VQA(nn.Module):
     def __init__(self,                 
-                 med_config = './app/vqa/configs/med_config.json', 
+                 med_config = './qa/configs/med_config.json', 
                  image_size = 480,
                  vit = 'base',
                  vit_grad_ckpt = False,

@@ -1,5 +1,5 @@
 from rest_framework.test import APIClient, APITestCase
-from vqa.utils import preprocess_question
+from qa.utils import preprocess_question
 
 
 class PreprocessQuestionTestCase(APITestCase):

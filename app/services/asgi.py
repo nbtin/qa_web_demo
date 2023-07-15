@@ -1,5 +1,5 @@
 """
-ASGI config for vqa project.
+ASGI config for qa project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
