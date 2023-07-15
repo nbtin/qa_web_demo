@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
+from rest_framework.permissions import AllowAny
 
 import json
 import base64
@@ -12,16 +13,17 @@ import logging
 from .utils import inference_img,inference_text, IMAGE_NAME
 
 
-
-def index(response):
+def index(request):
     """Render template index.html for the website UI."""
-    return render(response, "vqa/index.html", {})
+    return render(request, "vqa/index.html")
+
 class GetAnswers(APIView):
     """
     Create an API (POST method) to response the answer(s)
     for the front-end after running the inference process.
     """
-
+    authentication_classes = []
+    permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body.decode("utf-8"))
@@ -31,10 +33,10 @@ class GetAnswers(APIView):
 
             if(is_image):
 
-                current_directory = os.getcwd()  # Get the cSurrent working directory
+                current_directory = os.getcwd()  # Get the current working directory
 
                 image_path = os.path.join(
-                    current_directory, "app", IMAGE_NAME
+                    current_directory, IMAGE_NAME
                 )  # Construct the absolute path
 
                 """ Decode the string base64 to an image """
