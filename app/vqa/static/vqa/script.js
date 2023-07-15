@@ -119,9 +119,12 @@ submitButton.addEventListener('click', (event) => {
                     // Add like and dislike buttons
                     // let likeButton = '<button class="like-button" data-index="' + i + '">Like</button>';
                     // let dislikeButton = '<button class="dislike-button" data-index="' + i + '">Dislike</button>';
-                    let likeButton = '<i class="fa fa-thumbs-up feedback_button" ></i>'
-                    let dislikeButton = '<i class="fa fa-thumbs-down feedback_button"></i>'                
-                    lines[i] += '   ' + likeButton + ' ' + dislikeButton;
+                    
+                    if(i<lines.length - 1){
+                        let likeButton = '<i class="fa fa-thumbs-up feedback_button" ></i>'
+                        let dislikeButton = '<i class="fa fa-thumbs-down feedback_button"></i>'                
+                        lines[i+1 ] += '   ' + likeButton + ' ' + dislikeButton;
+                        }
                   }
                   result = lines.join("<br>");
                   console.log(result);

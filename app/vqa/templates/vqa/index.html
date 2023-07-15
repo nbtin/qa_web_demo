@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Visual Question Answering Demo</title>
+	<title>Question Answering Demo</title>
 	{% load static %} 
 	<link rel="stylesheet" type="text/css" href="{% static 'vqa/style.css' %}">
 	<link rel="icon" href="{% static 'vqa/icon.png' %}">
@@ -12,8 +12,7 @@
 <body>
 	<div class="container">
 		<div class="column">
-			<h1 id="app_name" onclick="reloadPage()">Visual Question Answering</h1>
-			<p id="instruction"><b>Instruction:</b>  Upload an image and ask one or more questions, separated by "?".</p>
+			<h1 id="app_name" onclick="reloadPage()">Question Answering</h1>
 			<form>
 				<div class="option-box">
 					<button class="option-button" id="text-button">Enter Text</button>
