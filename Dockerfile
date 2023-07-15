@@ -1,6 +1,6 @@
 FROM python:3.8
 
-WORKDIR /vqa-web-app/app
+WORKDIR /qa-web-app/app
 
 COPY requirements.txt requirements.txt
 

@@ -13,7 +13,7 @@ border-color: hsl(51, 100%, 40%);
 }
 
 {% endblock %}
-{% block title %}Question Answering{% endblock %}
+{% block title %}Question Answering System{% endblock %}
 
 {% block content %}
 <div class="container text-center m-5">
@@ -26,7 +26,7 @@ border-color: hsl(51, 100%, 40%);
 
         <a role="button" class="mt-2 btn btn-outline-danger" href="/handlelogout/">Log Out</a><br>
         <a role="button" class="mt-2 btn btn-outline-info" href="/changepass/">Change Password</a><br>
-        <a role="button" class="mt-2 btn btn-outline-primary" href="{% url 'vqa:index' %}">Use Question Answering System</a>
+        <a role="button" class="mt-2 btn btn-outline-primary" href="{% url 'qa:index' %}">Use Question Answering System</a>
 
         
     </div>

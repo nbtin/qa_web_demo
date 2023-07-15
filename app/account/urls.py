@@ -9,5 +9,5 @@ urlpatterns = [
     path('login/', views.loginuser, name="loginuser"),
     path('handlelogout/', views.handlelogout, name="handlelogout"),
     path('changepass/', views.ChangePassword.as_view(), name="changepass"),
-    path('vqa/', include('vqa.urls')),
+    path('qa/', include('qa.urls')),
 ]

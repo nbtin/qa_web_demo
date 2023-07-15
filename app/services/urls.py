@@ -1,5 +1,5 @@
 """
-URL configuration for vqa project.
+URL configuration for qa project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('account.urls')),  # Added account app
-    # path("vqa/", include("vqa.urls")),
     path('userprofile/', include('userprofile.urls'), name='userprofile'),  # Added user profile app
 ]
 

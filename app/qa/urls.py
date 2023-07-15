@@ -4,7 +4,7 @@ from .views import (
     GetAnswers,
 )
 
-app_name = 'vqa'
+app_name = 'qa'
 
 urlpatterns = [
     path("", views.index, name='index'),

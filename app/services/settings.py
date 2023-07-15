@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "account",
-    "vqa",
+    "qa",
     "userprofile",
 ]
 
