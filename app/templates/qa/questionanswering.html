@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<title>Question Answering System</title>
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'qa/style.css' %}">
+	<link rel="icon" href="{% static 'qa/icon.png' %}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	{% if not user.is_authenticated %}
+		<!-- auto return to the home.html file, not using the namespace -->
+		<script type="text/javascript">window.location.href = "/login/";</script>
+    {% else %}
+    <center>
+		<!-- <h2 style="margin-top: 20px;"> Question Answering System </h2> -->
+		<h5 style="margin-top: 20px;"> Hi <b style="color:green">{{ request.user }}</b>! </h2>
+		<a role="button" class="mt-2 btn btn-outline-info" href="{% url 'home' %}">Back Home</a>
+		<a role="button" class="btn btn-outline-secondary" style="margin-top:.5rem!important;" href="{% url 'userprofile:userprofile' request.user %}">View My Profile</a>
+		<!-- <a role="button" class="mt-2 btn btn-outline-info" href="/changepass">Change Password</a> -->
+		<a role="button" class="mt-2 btn btn-outline-danger" href="/handlelogout/">Log Out</a>
+	</center>
+	<div class="container">
+		<div class="column">
+			<h1 style="margin-top: 10px;" id="app_name" onclick="reloadPage()">Question Answering</h1>
+			<form>
+				<div class="option-box">
+					<button class="option-button" id="text-button">Enter Text</button>
+					<button class="option-button" id="image-button">Upload Image</button>
+					<textarea id="text-input" class="text-input" placeholder="Enter your text here..."></textarea>
+					<img id="image-input" class="image-input" alt="Uploaded Image">
+				</div>
+			
+				<textarea type="text" id="question-input" placeholder="Type your question here..."></textarea>
+				<button type="submit" id="submit-button">Ask</button>
+				<!-- <p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a>, 
+					with the core AI model being <a href="https://github.com/salesforce/BLIP" target="_blank">BLIP</a>.</p> -->
+				</form>
+				<button type="button" id ="help-button"> Help</button>
+		</div>
+		<div class="column">
+			<h1 style="margin-top: 10px;">Answer</h1>
+			<p id="answer">...</p>
+		</div>
+	</div>
+
+	{% load static %} 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="{% static 'qa/script.js' %}"></script>
+	{% endif %}
+</body>
+</html> 
+ 

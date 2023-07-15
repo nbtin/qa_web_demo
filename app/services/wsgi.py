@@ -1,5 +1,5 @@
 """
-WSGI config for vqa project.
+WSGI config for qa project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

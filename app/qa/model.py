@@ -5,9 +5,10 @@ import torch
 from PIL import Image
 import logging
 import os
+import base64
 # import BLIP model for Visual Question Answering tasks.
 from .models.blip_vqa import blip_vqa
-
+from .utils import Utils
 IMAGE_NAME = "recently_asked.jpg"
 
 import requests
@@ -49,7 +50,7 @@ model = model.to(device)
 
 
 class Model():
-    def preprocess_question(questions):
+    def preprocess_question(self, questions):
         flag = True  # use to check whether the question is a single question (False) or a set of questions (True)
 
         questions = questions.strip().split("?")
@@ -78,7 +79,7 @@ class ImageModel(Model):
     def inference(self, questions, context):
 
         current_directory = os.getcwd()  # Get the cSurrent working directory
-        image_path = os.path.join(current_directory, "app", IMAGE_NAME)  # Construct the absolute path
+        image_path = os.path.join(current_directory, IMAGE_NAME)  # Construct the absolute path
 
         """ Decode the string base64 to an image """
         # Remove the 'data:image/jpeg;base64,' prefix and decode the image data
@@ -92,7 +93,7 @@ class ImageModel(Model):
         raw_image = Image.open(image_path)
         image = transform(raw_image).unsqueeze(0).to(device)
 
-        flag, questions = preprocess_question(questions)
+        flag, questions = self.preprocess_question(questions)
 
         answers = (
             ""  # Parameter for saving multiple answers if there are multiple questions.
@@ -116,7 +117,7 @@ class TextModel(Model):
         return response.json()
 
     def predict(self, question, context):
-        output = query({
+        output = self.query({
             "inputs": {
                 "question": question,
                 "context": context
@@ -126,19 +127,19 @@ class TextModel(Model):
 
     def inference(self, questions, context):
         flag, questions = self.preprocess_question(questions)
-        print("Preprocess")
-        print(questions)
-        print(context)
-
+        # print("Preprocess")
+        # print(questions)
+        # print(context)
+        print(flag)
         answers = (
             ""  # Parameter for saving multiple answers if there are multiple questions.
         )
         if not flag:
-                answer = predict(questions[0], context)
+                answer = self.predict(questions[0], context)
                 print(answer)
                 return answer
         else:
             for quest in questions:
-                answer = predict(quest, context)
+                answer = self.predict(quest, context)
                 answers += f"{quest}\n\t&#8594; {answer}.\n\n"
             return answers
