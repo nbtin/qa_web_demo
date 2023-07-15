@@ -1,7 +1,7 @@
 import base64
 
 
-class Utils():
+class Utils:
     @staticmethod
     def image_to_base64(self, image_path):
         """
@@ -48,7 +48,7 @@ class Utils():
 #         flag = False
 #     else:
 #         for i in range(len(questions)):
-#             questions[i] += "?" 
+#             questions[i] += "?"
 
 #     return flag, questions
 
@@ -88,13 +88,12 @@ class Utils():
 #             return answers
 
 
-
 # def query(payload):
 # 	response = requests.post(API_URL, headers=headers, json=payload)
 # 	return response.json()
 
 # def predict(question, context):
-    
+
 #     output = query({
 # 	    "inputs": {
 # 		    "question": question,

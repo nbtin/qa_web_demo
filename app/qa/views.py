@@ -18,16 +18,19 @@ def index(request):
     """Render template questionanswering.html for the website UI."""
     return render(request, "qa/questionanswering.html")
 
+
 class GetAnswers(APIView):
     """
     Create an API (POST method) to response the answer(s)
     for the front-end after running the inference process.
     """
+
     authentication_classes = []
     permission_classes = [AllowAny]
+
     def __init__(self):
         self.model = Model()
-    
+
     def set_model(self, model):
         self.model = model
 
@@ -39,11 +42,11 @@ class GetAnswers(APIView):
             is_image = data["is_image"]
 
             # print(data)
-            if(is_image):
+            if is_image:
                 self.set_model(ImageModel())
             else:
                 self.set_model(TextModel())
-                
+
             answers = self.model.inference(questions, context)
             return Response(
                 {"status": "success", "data": answers}, status=status.HTTP_200_OK
