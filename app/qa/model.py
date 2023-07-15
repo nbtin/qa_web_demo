@@ -6,14 +6,18 @@ from PIL import Image
 import logging
 import os
 import base64
+
 # import BLIP model for Visual Question Answering tasks.
 from .models.blip_vqa import blip_vqa
 from .utils import Utils
+
 IMAGE_NAME = "recently_asked.jpg"
 
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
+API_URL = (
+    "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
+)
 API_TOKEN = "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"
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
@@ -48,8 +52,7 @@ model.eval()
 model = model.to(device)
 
 
-
-class Model():
+class Model:
     def preprocess_question(self, questions):
         flag = True  # use to check whether the question is a single question (False) or a set of questions (True)
 
@@ -67,19 +70,20 @@ class Model():
             flag = False
         else:
             for i in range(len(questions)):
-                questions[i] += "?" 
+                questions[i] += "?"
 
         return flag, questions
-    
 
     def inference(questions, context):
         pass
 
+
 class ImageModel(Model):
     def inference(self, questions, context):
-
         current_directory = os.getcwd()  # Get the cSurrent working directory
-        image_path = os.path.join(current_directory, IMAGE_NAME)  # Construct the absolute path
+        image_path = os.path.join(
+            current_directory, IMAGE_NAME
+        )  # Construct the absolute path
 
         """ Decode the string base64 to an image """
         # Remove the 'data:image/jpeg;base64,' prefix and decode the image data
@@ -111,18 +115,16 @@ class ImageModel(Model):
 
 
 class TextModel(Model):
-
     def query(self, payload):
         response = requests.post(API_URL, headers=headers, json=payload)
         return response.json()
 
     def predict(self, question, context):
-        output = self.query({
-            "inputs": {
-                "question": question,
-                "context": context
-            },
-        })
+        output = self.query(
+            {
+                "inputs": {"question": question, "context": context},
+            }
+        )
         return output["answer"]
 
     def inference(self, questions, context):
@@ -135,9 +137,9 @@ class TextModel(Model):
             ""  # Parameter for saving multiple answers if there are multiple questions.
         )
         if not flag:
-                answer = self.predict(questions[0], context)
-                print(answer)
-                return answer
+            answer = self.predict(questions[0], context)
+            print(answer)
+            return answer
         else:
             for quest in questions:
                 answer = self.predict(quest, context)

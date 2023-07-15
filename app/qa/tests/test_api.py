@@ -25,7 +25,7 @@ class GetAnswersTestCase(APITestCase):
         if is_image:
             request_body["context"] = "data:image/jpeg;base64," + image
         else:
-            request_body["context"] = "" # add later
+            request_body["context"] = ""  # add later
 
         # make the API call
         response = self.client.post(

@@ -13,13 +13,14 @@ def userprofile(request, username):
         profile = Profile.objects.get(user=user)
         bio = profile.bio
         user_img = profile.image
-        data = {'user_obj': user,
-                'bio': bio,
-                'userImg': user_img,
-                }
-        return render(request, 'userprofile/userprofile.html', data)
+        data = {
+            "user_obj": user,
+            "bio": bio,
+            "userImg": user_img,
+        }
+        return render(request, "userprofile/userprofile.html", data)
     else:
-        return HttpResponse('No Such User')
+        return HttpResponse("No Such User")
 
 
 @login_required
@@ -33,6 +34,10 @@ def saveProfile(request):
         if bio:
             profile.bio = bio
         profile.save()
-        return HttpResponseRedirect(reverse("userprofile:userprofile", args=(request.user.username,)))
+        return HttpResponseRedirect(
+            reverse("userprofile:userprofile", args=(request.user.username,))
+        )
     else:
-        return HttpResponseRedirect(reverse("userprofile:userprofile", args=(request.user.username,)))
+        return HttpResponseRedirect(
+            reverse("userprofile:userprofile", args=(request.user.username,))
+        )
