@@ -1,11 +1,11 @@
-body {
+ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #F5F5F5;
 }
 
-/* Large screens */
+
 .container {
     display: flex;
     flex-direction: row;
@@ -136,8 +136,54 @@ textarea{
 #credit{
     font-size: 14px;
 }
+#help-button{
+    background-color: #007FFF;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+/* Style the popup card */
+.popup-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    max-height: calc(100vh - 50px);
+    overflow: hidden; /* hide the scrollbar */
+}
+.popup-card h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.popup-card p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    white-space: pre-wrap; /* allow the text to wrap to the next line */
+    word-wrap: break-word; /* allow long words to break and wrap to the next line */
+}
+.popup-card button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 
-/* Small screens */
 @media (max-width: 768px) {
 .container {
     flex-direction: column;
@@ -146,4 +192,134 @@ textarea{
 
 .column {
     max-width: 100%;
-}}
+}}  
+
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.option-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.option-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.text-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}
+
+.image-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.option-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.text-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}
+
+.image-input {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.question-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    flex: 1;
+    width: 300px;
+    font-size: 16px;
+}
+
+.answer-box {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-size: 16px;
+}
+
+.feedback_button {
+    cursor: pointer;
+}

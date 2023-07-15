@@ -7,15 +7,15 @@ from django.shortcuts import render
 import json
 import base64
 import os
+import logging
 
-from .utils import inference, IMAGE_NAME
+from .utils import inference_img,inference_text, IMAGE_NAME
+
 
 
 def index(response):
     """Render template index.html for the website UI."""
     return render(response, "vqa/index.html", {})
-
-
 class GetAnswers(APIView):
     """
     Create an API (POST method) to response the answer(s)
@@ -25,27 +25,35 @@ class GetAnswers(APIView):
     def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body.decode("utf-8"))
-            image = data["image"]
+            context = data["context"]
             questions = data["questions"]
+            is_image = data["is_image"]
 
-            current_directory = os.getcwd()  # Get the current working directory
+            if(is_image):
 
-            image_path = os.path.join(
-                current_directory, "app", IMAGE_NAME
-            )  # Construct the absolute path
+                current_directory = os.getcwd()  # Get the cSurrent working directory
 
-            """ Decode the string base64 to an image """
-            # Remove the 'data:image/jpeg;base64,' prefix and decode the image data
-            _, image = image.split(",", 1)
-            image_64_decode = base64.b64decode(image)
+                image_path = os.path.join(
+                    current_directory, "app", IMAGE_NAME
+                )  # Construct the absolute path
 
-            # create a writable image and write the decoding result
-            image_result = open(image_path, "wb")
-            image_result.write(image_64_decode)
+                """ Decode the string base64 to an image """
+                # Remove the 'data:image/jpeg;base64,' prefix and decode the image data
+                _, context = context.split(",", 1)
+                image_64_decode = base64.b64decode(context)
 
-            # get the answer from the inference function
-            answers = inference(image_path, questions)
+                # create a writable image and write the decoding result
+                image_result = open(image_path, "wb")
+                image_result.write(image_64_decode)
 
+                # get the answer from the inference function
+                answers = inference_img(image_path, questions)
+            
+            else:
+                print("Inference text")
+                answers = inference_text(questions, context)
+
+                
             return Response(
                 {"status": "success", "data": answers}, status=status.HTTP_200_OK
             )
