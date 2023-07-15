@@ -14,8 +14,8 @@ from .utils import inference_img,inference_text, IMAGE_NAME
 
 
 def index(request):
-    """Render template index.html for the website UI."""
-    return render(request, "vqa/index.html")
+    """Render template questionanswering.html for the website UI."""
+    return render(request, "qa/questionanswering.html")
 
 class GetAnswers(APIView):
     """
