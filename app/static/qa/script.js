@@ -87,24 +87,6 @@ submitButton.addEventListener('click', (event) => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                const likeButton = document.createElement('button');
-                likeButton.innerHTML = 'Like';
-                const dislikeButton = document.createElement('button');
-                dislikeButton.innerHTML = 'Dislike';
-
-                answerBox.appendChild(likeButton);
-                answerBox.appendChild(dislikeButton);
-
-
-                likeButton.addEventListener('click', () => {
-                    // Handle like feedback here
-                });
-                
-                dislikeButton.addEventListener('click', () => {
-                    // Handle dislike feedback here
-                });
-
-
                 let result = data.data;
                 console.log(result);
                 const lines = result.split("\n");
