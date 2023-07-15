@@ -11,11 +11,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    /* height: 70vh; */
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px;
-    padding-top:25px;
+    padding-top:10px;
+    padding-bottom:10px;
     align-items: flex-start;
 }
 
@@ -34,6 +35,15 @@
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
     border-radius: 5px;
     overflow: hidden;
+}
+
+.horizontal-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    align-items: flex-start;
 }
 
 #instruction {
@@ -121,6 +131,7 @@ textarea{
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right:10px
 }
 
 #submit-button:hover {
@@ -134,16 +145,18 @@ textarea{
 }
 
 #credit{
-    font-size: 14px;
+    font-size: 12px;
 }
+
 #help-button{
-    background-color: #007FFF;
-    color: #FFFFFF;
+    background-color: #CCCCCC;
+    color: #333333;
     font-size: 16px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     padding: 10px;
+    margin-left:10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -200,7 +213,7 @@ textarea{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .option-box {
@@ -242,7 +255,7 @@ textarea{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 300px;
+    /* width: 300px; */
     height: 200px;
     object-fit: contain;
 }
@@ -267,29 +280,6 @@ textarea{
     background-color: #eee;
     cursor: pointer;
     font-size: 16px;
-}
-
-.text-input {
-    display: none;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    height: 200px;
-    resize: none;
-    font-size: 16px;
-}
-
-.image-input {
-    display: none;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    height: 200px;
-    object-fit: contain;
 }
 
 .question-box {

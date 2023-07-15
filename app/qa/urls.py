@@ -4,9 +4,9 @@ from .views import (
     GetAnswers,
 )
 
-app_name = 'qa'
+app_name = "qa"
 
 urlpatterns = [
-    path("", views.index, name='index'),
-    path("answer/", GetAnswers.as_view(), name='answer'),
+    path("", views.index, name="index"),
+    path("answer/", GetAnswers.as_view(), name="answer"),
 ]
