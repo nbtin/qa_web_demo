@@ -131,7 +131,7 @@ import requests
 
 API_URL = "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
 API_TOKEN = "***REMOVED***"
-headers = {"Authorization": f"Bearer "}
+headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
