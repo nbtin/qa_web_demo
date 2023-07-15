@@ -2,7 +2,7 @@ import json
 from rest_framework.test import APIClient, APITestCase
 from rest_framework import status
 
-from vqa.utils import image_to_base64
+from vqa.utils import Utils
 import os
 
 
@@ -17,7 +17,7 @@ class GetAnswersTestCase(APITestCase):
         }
 
         # Remove the 'data:image/jpeg;base64,' prefix
-        image = image_to_base64(
+        image = Utils.image_to_base64(
             os.path.join(os.getcwd(), "app", "vqa", "tests", "imgs", image_name)
         )
 
