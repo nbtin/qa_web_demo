@@ -1,6 +1,6 @@
 FROM python:3.8
 
-WORKDIR /vqa-web-app
+WORKDIR /vqa-web-app/app
 
 COPY requirements.txt requirements.txt
 
@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "./app/manage.py", "runserver", "0.0.0.0:5000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:5000"]

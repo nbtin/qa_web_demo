@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block css %}
+.form-class {
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+
+{% endblock %}
+
+{% block title %}Sign up{% endblock title%}
+
+{% block content %}
+<div class="container my-4 bg pb-5">
+    <div class="row justify-content-center ">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="display-6">Sign up!</h1>
+                    <div class="form-class">
+                        <form class="lead mx-2" method="post" action="{% url 'signupuser' %}">
+                            {% csrf_token %}
+                            <div class="form-group mt-2 mb-2">
+                                First name: {{form.first_name}}
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                Last name: {{form.last_name}}
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                Username: {{ form.username }}
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                Email: {{ form.email }}
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                Password: {{ form.password1 }}
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                (Confirm): {{ form.password2 }}
+                            </div>
+                            <button type="submit" class="btn btn-success">Sign up!</button>
+                        </form>
+                    </div>
+                    <hr>
+                    <p class="lead">Already have an account? <a href="{% url 'loginuser' %}"
+                                                                class="text-decoration-none">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,7 +1,10 @@
 # folder
 **/__pycache__
 **/.vscode
+**/Profiles
+
 
 # file
 recently_asked.jpg
 **/model_v1
+ngrok.exe
