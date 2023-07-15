@@ -17,7 +17,7 @@
     {% else %}
     <center>
 		<!-- <h2 style="margin-top: 20px;"> Question Answering System </h2> -->
-		<h5 style="margin-top: 20px;"> Hi <b style="color:green">{{ request.user }}</b>! </h2>
+		<h5 style="margin-top: 10px;"> Hi <a style="text-decoration: none;" href="{% url 'userprofile:userprofile' request.user %}"><b style="color:green">{{ request.user }}</b></a>! </h5>
 		<a role="button" class="mt-2 btn btn-outline-info" href="{% url 'home' %}">Back Home</a>
 		<a role="button" class="btn btn-outline-secondary" style="margin-top:.5rem!important;" href="{% url 'userprofile:userprofile' request.user %}">View My Profile</a>
 		<!-- <a role="button" class="mt-2 btn btn-outline-info" href="/changepass">Change Password</a> -->
@@ -28,29 +28,38 @@
 			<h1 style="margin-top: 10px;" id="app_name" onclick="reloadPage()">Question Answering</h1>
 			<form>
 				<div class="option-box">
-					<button class="option-button" id="text-button">Enter Text</button>
-					<button class="option-button" id="image-button">Upload Image</button>
+					<div class="horizontal-button">
+						<button class="option-button" id="text-button">Enter Text</button>
+						<button class="option-button" id="image-button">Upload Image</button>
+					</div>
 					<textarea id="text-input" class="text-input" placeholder="Enter your text here..."></textarea>
 					<img id="image-input" class="image-input" alt="Uploaded Image">
 				</div>
 			
 				<textarea type="text" id="question-input" placeholder="Type your question here..."></textarea>
-				<button type="submit" id="submit-button">Ask</button>
+				<div class="horizontal-button">
+					<button type="submit" id="submit-button">Ask AI</button>
+					<button type="button" id ="help-button"> Help</button>
+				</div>
 				<!-- <p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a>, 
 					with the core AI model being <a href="https://github.com/salesforce/BLIP" target="_blank">BLIP</a>.</p> -->
 				</form>
-				<button type="button" id ="help-button"> Help</button>
 		</div>
 		<div class="column">
 			<h1 style="margin-top: 10px;">Answer</h1>
 			<p id="answer">...</p>
 		</div>
 	</div>
+	<!-- how can I fix the hr and center below in the end of the page, not affected by the flex -->
 
+  	<div style="position: absolute; bottom: 0px;right:0px;">
+    <p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a> and <a href="https://github.com/lhtrong" target="_blank">Le Huu Trong</a>.</p>
+	</div>
 	{% load static %} 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="{% static 'qa/script.js' %}"></script>
 	{% endif %}
+	
 </body>
 </html> 
  

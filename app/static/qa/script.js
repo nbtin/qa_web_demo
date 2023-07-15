@@ -44,17 +44,17 @@ submitButton.addEventListener('click', (event) => {
     /* Use fetch API to get the answer from user via API named '/answer' */
     event.preventDefault();
 
-    // if(fileInput.files === null){
-    //     console.log("1");
-    // }
-    // else{
-
-    // const file = fileInput.files[0];
     const question = questionInput.value;
-    // }
     answerBox.innerText = "Wait a second...";
 
-    if (question) { // check if the file is uploaded and the question box is not empty
+    // check if textInput.value is not empty
+    if(textInput.value.trim() == "" && imageInput.src.trim() == "") {
+        answerBox.innerText = 'Please enter a text or upload an image.';
+    }
+    else if((textInput.value.trim() != "" && questionInput.value.trim() == "") || (imageInput.src.trim() == "" && questionInput.value.trim() == "")) {
+        answerBox.innerText = 'Please ask a question.';
+    }
+    else if (question) { // check if the file is uploaded and the question box is not empty
         // const formData = new FormData();
         // formData.append('image', file);
         // formData.append('questions', question);
@@ -130,7 +130,7 @@ submitButton.addEventListener('click', (event) => {
                     const popupCard = $('<div>').addClass('popup-card');
                     const closeButton = $('<button>').text('X');
                     const answerTitle = $('<h2>').text('Thank you');
-                    const answerText = $('<p>').text("Your feedback is valuable to us !");
+                    const answerText = $('<p>').text("Your feedback is valuable to us!");
             
                     closeButton.click(() => {
                         popupCard.remove();
@@ -170,7 +170,7 @@ for (var i = 0; i < feedbackButtons.length; i++) {
         });
     }
     else {
-        answerBox.innerText = 'Please select an image and ask a question.';
+        answerBox.innerText = 'Please enter a text or select an image, then ask a question.';
     }
     
 });
@@ -237,7 +237,7 @@ questionInput.addEventListener('keydown', function(event) {
       };
   }
 
-const instructions = "1. Select type of context you want to provide (text/image) \n 2. If text, type or copy to context field. \n If image, select image from you device to upload to system \n 3. Type or copy to question field (the content should be related to provided context)\n You can input multiple question (as long as they are separated by '?') 4. Wait for the answer \n 5. Give feedback about question" 
+const instructions = "1. Select type of context you want to provide (text/image)\n2. If text, type or copy to context field.\n\tIf image, select image from you device to upload to system\n3. Type or copy to question field (the content should be related to provided context)\nYou can input multiple question (as long as they are separated by '?')\n4. Wait for the answer\n5. Give feedback about question" 
 
 const helpButton = document.getElementById('help-button');
 helpButton.addEventListener('click', function() {

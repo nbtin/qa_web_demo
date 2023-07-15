@@ -19,7 +19,7 @@ border-color: hsl(51, 100%, 40%);
 <div class="container text-center m-5">
     <h1 class="display-4">Question Answering System</h1>
     {% if user.is_authenticated %}
-    Hi {{ request.user }}!
+    <h5> Hi <a style="text-decoration: none;" href="{% url 'userprofile:userprofile' request.user %}"><b style="color:green">{{ request.user }}</b></a>! </h5>
     <div class="mt-3">
         <a role="button" class="btn btn-outline-secondary" href="{% url 'userprofile:userprofile' request.user %}">View My
             Profile</a><br>
@@ -27,8 +27,9 @@ border-color: hsl(51, 100%, 40%);
         <a role="button" class="mt-2 btn btn-outline-danger" href="/handlelogout/">Log Out</a><br>
         <a role="button" class="mt-2 btn btn-outline-info" href="/changepass/">Change Password</a><br>
         <a role="button" class="mt-2 btn btn-outline-primary" href="{% url 'qa:index' %}">Use Question Answering System</a>
-
-        
+        <!-- <hr>
+        <p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a> and <a href="https://github.com/lhtrong" target="_blank">Le Huu Trong</a>.</p>
+         -->
     </div>
     
     {% else %}
@@ -44,5 +45,7 @@ border-color: hsl(51, 100%, 40%);
             </div>
         </div>
         {% endif %}
+        <hr style="margin-top: 20px;">
+        <p id="credit">Developed by  <a href="https://github.com/nbtin" target="_blank">Nguyen Bao Tin</a> and <a href="https://github.com/lhtrong" target="_blank">Le Huu Trong</a>.</p>
     </div>
     {% endblock %}
