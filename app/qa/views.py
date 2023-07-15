@@ -10,7 +10,8 @@ import base64
 import os
 import logging
 
-from .utils import inference_img,inference_text, IMAGE_NAME
+from .utils import Utils
+from .model import Model, ImageModel, TextModel
 
 
 def index(request):
@@ -24,6 +25,12 @@ class GetAnswers(APIView):
     """
     authentication_classes = []
     permission_classes = [AllowAny]
+    def __init__(self):
+        self.model = Model()
+    
+    def set_model(self, model):
+        self.model = model
+
     def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body.decode("utf-8"))
@@ -31,37 +38,19 @@ class GetAnswers(APIView):
             questions = data["questions"]
             is_image = data["is_image"]
 
+            # print(data)
             if(is_image):
-
-                current_directory = os.getcwd()  # Get the current working directory
-
-                image_path = os.path.join(
-                    current_directory, IMAGE_NAME
-                )  # Construct the absolute path
-
-                """ Decode the string base64 to an image """
-                # Remove the 'data:image/jpeg;base64,' prefix and decode the image data
-                _, context = context.split(",", 1)
-                image_64_decode = base64.b64decode(context)
-
-                # create a writable image and write the decoding result
-                image_result = open(image_path, "wb")
-                image_result.write(image_64_decode)
-
-                # get the answer from the inference function
-                answers = inference_img(image_path, questions)
-            
+                self.set_model(ImageModel())
             else:
-                print("Inference text")
-                answers = inference_text(questions, context)
-
+                self.set_model(TextModel())
                 
+            answers = self.model.inference(questions, context)
             return Response(
                 {"status": "success", "data": answers}, status=status.HTTP_200_OK
             )
+
         except Exception as e:
-            print(e)
             return Response(
-                {"status": "error", "data": "Invalid request"},
+                {"status": "error", "data": f"Invalid request: {str(e)}"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
