@@ -8,11 +8,3 @@ timm==0.4.12
 torch==2.0.1
 torchvision==0.15.2
 transformers==4.15.0
-
-# asgiref==3.6.0
-# autopep8==1.5.7
-# pycodestyle==2.7.0
-# pyperclip==1.8.2
-# pytz==2021.1
-# sqlparse==0.4.1
-# toml==0.10.2
