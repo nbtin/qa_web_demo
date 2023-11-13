@@ -18,7 +18,7 @@ import requests
 API_URL = (
     "https://api-inference.huggingface.co/models/distilbert-base-cased-distilled-squad"
 )
-API_TOKEN = "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"
+API_TOKEN = os.getenv("API_TOKEN")
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
 
